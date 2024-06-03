@@ -1,0 +1,21 @@
+body {
+    padding: 2 rem;
+}
+
+h2 {
+    text-align: center
+}
+
+.Image {
+width: 300px;
+float: left;
+}
+
+.Image1 {
+width: 400px;
+float: right;
+}
+
+hr {
+    color : black;
+}

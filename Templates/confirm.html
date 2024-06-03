@@ -1,0 +1,30 @@
+{% extends 'Main.html' %}
+{% block  title %} Confirm {% endblock %}
+{% block  site %}
+<div class="card" style="width : max";>
+    <div class ="card body">
+    <h2 class="align-center">Are you sure you want to delete : "{{movie}}" ?? </h2><br><br><br>
+    </div>
+</div>
+
+<div class="card" style="width : max";>
+    <div class ="card body">
+        <div class = "row">
+            <div class ="col-3">
+            </div>
+            <div class ="col-3">
+                    <form method="post">
+                         {% csrf_token %}
+                        <button type="submit" style="width : 10rem;" class="btn btn-warning">Delete</button>
+                    </form>
+            </div>
+            <div class ="col-3">
+                    <a class="btn btn-warning" style="width : 10rem"; href="{% url 'all'%}">Cofnij</a>
+            </div>
+            <div class ="col-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

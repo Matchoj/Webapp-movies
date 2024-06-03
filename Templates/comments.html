@@ -1,0 +1,56 @@
+{% extends 'Main.html' %}
+
+{% load bootstrap %}
+{% block  title %} Comments {% endblock %}
+
+{% block  site %}
+<body>
+<div class="card" style="width:max60rem;">
+    <div class="card-body">
+        <img src ="/media/{{movies.pictures}}" class="Image1">
+        <div class ="row">
+            <h1 class ="card-title">{{movies.title}}</h1>
+        </div>
+        <div class = "row">
+            <h4 class="card-text">{{movies.description}}</h4>
+            <h4 class="card-text"> Year: {{movies.year}}</h4>
+            <h4 class="card-text"> Rating: {{movies.rating}}</h4>
+        </div>
+    </div>
+</div>
+<br>
+Komentarze :
+<div class="card" style="width:max;">
+    <div class="card body">
+        {%for i in comments%}
+        <div class ="row">
+            <hr>
+            <div class ="col-10">
+                <h4>{{i.comment}}</h4>
+            </div>
+            <div class ="col-1">
+                <h4>{{i.rate}}</h4>
+            </div>
+            <div class ="col-1">
+                <a href="{%url 'deletecom' i.id%} "><i class="fa-solid fa-2x fa-trash"></i></a>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<div class ="card" style="width:40rem;">
+    <div class ="card=body">
+        <div class ="row">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+          {{form | bootstrap}}
+    <button  class = "btn btn-success" style="width : 40rem;" type="submit">Submit</button>
+</form>
+            </div>
+    </div>
+</div>
+
+<a class="btn btn-warning" style="width : 40rem;" href="{% url 'all'%}">Cofnij</a>
+
+ {% endblock %}

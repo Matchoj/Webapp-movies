@@ -1,0 +1,64 @@
+{% extends 'Main.html' %}
+
+{% block  title %} Movie list {% endblock %}
+
+{% block  site %}
+{% if user.is_authenticated %}
+<div class="card" style="width: max;">
+    <div class="card-body">
+        <div class ="row">
+            <div class ="col-11">
+                <h1>Hello {{ user.username}}</h1> <br>
+            </div>
+            <div class = col-1>
+                <a href="{% url 'logout'%}">Logout<i class="fa-solid fa-3x fa-right-from-bracket"></i></a>
+            </div>
+    </div>
+</div>
+
+{% else %}
+    <div class="card" style="width: max;">
+    <div class="card-body">
+        <div class ="row">
+            <div class ="col-11">
+                <h1 class="align-center">Welcome !</h1>
+            </div>
+            <div class ="col-1">
+                    <a href="{% url 'login'%}"><i class="fa-regular fa-3x fa-user"></i></a>
+            </div>
+<hr>
+{%endif%}
+<a  class="btn btn-success" href="{%url 'new'%} ">Add new movie</a>
+
+{% if all|length == 0 %}<br>
+    <h2>NO MOVIES ADDED</h2>
+{%else%}
+            <br>
+        {% for m in all%}
+            <div class="card" style="width: max;">
+                <div class="card-body">
+                    <img src="/media/{{m.pictures}}" class = "Image">
+                    <div class ="row">
+                        <div class ="col-10">
+                             <h5 class="card-title">{{m}}</h5>
+                        </div>
+                        <div class ="col-2">
+                            <a href="{%url 'edit' m.id%} "><i class="fa-solid fa-2x fa-pen"></i></a>
+                            <a href="{%url 'delete' m.id%} "><i class="fa-solid fa-2x fa-trash"></i></a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class = "row">
+                        <p class ="card-text">{{m.description}}</p>
+                        <p class ="card-text">{{m.spec_info}}</p>
+
+                </div>
+            </div>
+            </div>
+                    <div class = "card-text">
+                        <a class="btn btn-primary" style="float : right;" href="{% url 'comments' m.id %}">Comment</a>
+                     </div><br>
+        {% endfor %}
+
+{%endif%}
+ {% endblock %}
