@@ -5,6 +5,7 @@
 
 {% block  site %}
 <body>
+<!--Creating a card with information about movie --->
 <div class="card" style="width:max60rem;">
     <div class="card-body">
         <img src ="/media/{{movies.pictures}}" class="Image1">
@@ -19,7 +20,8 @@
     </div>
 </div>
 <br>
-Komentarze :
+Comments :
+<!--Listing a cards with every comment object created for this movie object --->
 <div class="card" style="width:max;">
     <div class="card body">
         {%for i in comments%}
@@ -39,6 +41,7 @@ Komentarze :
         {%endfor%}
     </div>
 </div>
+<!--Creating a card with option of posting new comment--->
 <div class ="card" style="width:40rem;">
     <div class ="card=body">
         <div class ="row">

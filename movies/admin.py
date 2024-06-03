@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Movie, Info, Comment
 
-#admin.site.register(Movie)
+# Registering models
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):

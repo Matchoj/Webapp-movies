@@ -1,4 +1,9 @@
-*.idea
-*.sqlite3
-*pyc
+*.log
+*.pot
+*.pyc
+__pycache__/
+settings.py
+.evn
+db.sqlite3
 my_media
+.venv

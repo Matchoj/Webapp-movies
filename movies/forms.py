@@ -1,6 +1,8 @@
 from django.forms import ModelForm
 from .models import Movie,Info, Comment
 
+#Forms : will be used to create new objects of models
+
 class commentForm(ModelForm):
     class Meta:
         model = Comment

@@ -1,5 +1,6 @@
 from django.db import models
 
+# Model combined with Main model movie  one-to-one
 class Info(models.Model):
     Kinds = {
         (0, "Familly"),
@@ -19,6 +20,7 @@ class Info(models.Model):
     kind = models.PositiveSmallIntegerField(default=0, choices=Kinds)
     age = models.PositiveSmallIntegerField(default=0, choices=Ages)
 
+    # This method will find correct attribute in set and return it as text
     def beckone(self):
         x = self.Kinds
         x1 = self.Ages
@@ -27,11 +29,12 @@ class Info(models.Model):
         text = "Kind: {} | Age: {} ".format(y[1],y1[1])
         return text
 
+# This method will print text from one above - changing object name
     def __str__(self):
         return "{}".format(self.beckone())
 
 
-
+# Main model of application it will create movie objects
 class Movie(models.Model):
     title= models.CharField(max_length=80,blank=False,unique=True)
     year= models.PositiveSmallIntegerField(default=2000)
@@ -40,9 +43,12 @@ class Movie(models.Model):
     pictures= models.ImageField(upload_to="Images",null=True,blank=True)
     spec_info=models.OneToOneField(Info, on_delete=models.CASCADE, null=True,blank=True)
 
+    #changing object name
     def __str__(self):
         return "{} ({}) ".format(self.title,self.year)
 
+
+#  many to one model, creating objects of comments for each movie
 class Comment(models.Model):
 
     comment= models.CharField(max_length=500,blank = False, unique= True)
